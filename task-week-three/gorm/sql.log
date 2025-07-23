@@ -1,0 +1,672 @@
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.491ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[5.436ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.654ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' AND table_type = 'BASE TABLE'
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[15.494ms] [rows:0] CREATE TABLE `t_unicornuser` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`user_name` longtext,`age` bigint,`password` longtext,`email` longtext,PRIMARY KEY (`id`),INDEX `idx_t_unicornuser_deleted_at` (`deleted_at`))
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.365ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.658ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.279ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' AND table_type = 'BASE TABLE'
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[18.417ms] [rows:0] CREATE TABLE `t_unicornpost` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`title` longtext,`content` longtext,`user_id` bigint unsigned,PRIMARY KEY (`id`),INDEX `idx_t_unicornpost_deleted_at` (`deleted_at`),CONSTRAINT `fk_t_unicornuser_posts` FOREIGN KEY (`user_id`) REFERENCES `t_unicornuser`(`id`))
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.472ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.893ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.525ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND table_type = 'BASE TABLE'
+
+2025/07/23 12:52:23 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[26.781ms] [rows:0] CREATE TABLE `t_unicorncomment` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`content` longtext,`user_id` bigint unsigned,`post_id` bigint unsigned,PRIMARY KEY (`id`),INDEX `idx_t_unicorncomment_deleted_at` (`deleted_at`),CONSTRAINT `fk_t_unicornuser_comments` FOREIGN KEY (`user_id`) REFERENCES `t_unicornuser`(`id`),CONSTRAINT `fk_t_unicornpost_comments` FOREIGN KEY (`post_id`) REFERENCES `t_unicornpost`(`id`))
+
+2025/07/23 14:05:09 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:18
+[7.293ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`) VALUES ('2025-07-23 14:05:09.849','2025-07-23 14:05:09.849',NULL,'张三',20,'123456','zhangsan@example.com')
+
+2025/07/23 14:05:09 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:30
+[2.782ms] [rows:3] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`) VALUES ('2025-07-23 14:05:09.855','2025-07-23 14:05:09.855',NULL,'go','go语言从入门到精通',NULL),('2025-07-23 14:05:09.855','2025-07-23 14:05:09.855',NULL,'java','java语言从入门到精通',NULL),('2025-07-23 14:05:09.855','2025-07-23 14:05:09.855',NULL,'linux','linux从入门到精通',NULL)
+
+2025/07/23 14:07:11 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:18
+[5.813ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`) VALUES ('2025-07-23 14:07:11.347','2025-07-23 14:07:11.347',NULL,'张三',20,'123456','zhangsan@example.com')
+
+2025/07/23 14:07:11 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:30
+[2.469ms] [rows:3] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`) VALUES ('2025-07-23 14:07:11.352','2025-07-23 14:07:11.352',NULL,'go','go语言从入门到精通',NULL),('2025-07-23 14:07:11.352','2025-07-23 14:07:11.352',NULL,'java','java语言从入门到精通',NULL),('2025-07-23 14:07:11.352','2025-07-23 14:07:11.352',NULL,'linux','linux从入门到精通',NULL)
+
+2025/07/23 14:07:11 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:34
+[1.601ms] [rows:6] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`,`id`) VALUES ('2025-07-23 14:07:11.352','2025-07-23 14:07:11.352',NULL,'go','go语言从入门到精通',2,4),('2025-07-23 14:07:11.352','2025-07-23 14:07:11.352',NULL,'java','java语言从入门到精通',2,5),('2025-07-23 14:07:11.352','2025-07-23 14:07:11.352',NULL,'linux','linux从入门到精通',2,6) ON DUPLICATE KEY UPDATE `user_id`=VALUES(`user_id`)
+
+2025/07/23 14:07:11 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:34
+[3.732ms] [rows:1] UPDATE `t_unicornuser` SET `updated_at`='2025-07-23 14:07:11.355' WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 2
+
+2025/07/23 14:07:11 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:43
+[2.520ms] [rows:3] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`) VALUES ('2025-07-23 14:07:11.358','2025-07-23 14:07:11.358',NULL,'go语言从入门到精通',NULL,NULL),('2025-07-23 14:07:11.358','2025-07-23 14:07:11.358',NULL,'java语言从入门到精通',NULL,NULL),('2025-07-23 14:07:11.358','2025-07-23 14:07:11.358',NULL,'linux从入门到精通',NULL,NULL)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:18
+[5.991ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`) VALUES ('2025-07-23 14:07:45.811','2025-07-23 14:07:45.811',NULL,'张三',20,'123456','zhangsan@example.com')
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:30
+[2.802ms] [rows:3] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`) VALUES ('2025-07-23 14:07:45.816','2025-07-23 14:07:45.816',NULL,'go','go语言从入门到精通',NULL),('2025-07-23 14:07:45.816','2025-07-23 14:07:45.816',NULL,'java','java语言从入门到精通',NULL),('2025-07-23 14:07:45.816','2025-07-23 14:07:45.816',NULL,'linux','linux从入门到精通',NULL)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:34
+[1.680ms] [rows:6] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`,`id`) VALUES ('2025-07-23 14:07:45.816','2025-07-23 14:07:45.816',NULL,'go','go语言从入门到精通',3,7),('2025-07-23 14:07:45.816','2025-07-23 14:07:45.816',NULL,'java','java语言从入门到精通',3,8),('2025-07-23 14:07:45.816','2025-07-23 14:07:45.816',NULL,'linux','linux从入门到精通',3,9) ON DUPLICATE KEY UPDATE `user_id`=VALUES(`user_id`)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:34
+[4.079ms] [rows:1] UPDATE `t_unicornuser` SET `updated_at`='2025-07-23 14:07:45.818' WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 3
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:43
+[2.550ms] [rows:3] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`) VALUES ('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'go语言从入门到精通',NULL,NULL),('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'java语言从入门到精通',NULL,NULL),('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'linux从入门到精通',NULL,NULL)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:46
+[1.213ms] [rows:4] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`,`id`) VALUES ('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'go语言从入门到精通',NULL,7,4),('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'java语言从入门到精通',NULL,7,5) ON DUPLICATE KEY UPDATE `post_id`=VALUES(`post_id`)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:46
+[3.669ms] [rows:1] UPDATE `t_unicornpost` SET `updated_at`='2025-07-23 14:07:45.825' WHERE `t_unicornpost`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:49
+[1.234ms] [rows:4] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`,`id`) VALUES ('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'java语言从入门到精通',NULL,8,5),('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'linux从入门到精通',NULL,8,6) ON DUPLICATE KEY UPDATE `post_id`=VALUES(`post_id`)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:49
+[3.315ms] [rows:1] UPDATE `t_unicornpost` SET `updated_at`='2025-07-23 14:07:45.829' WHERE `t_unicornpost`.`deleted_at` IS NULL AND `id` = 8
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:52
+[1.245ms] [rows:6] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`,`id`) VALUES ('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'linux从入门到精通',NULL,9,6),('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'go语言从入门到精通',NULL,9,4),('2025-07-23 14:07:45.823','2025-07-23 14:07:45.823',NULL,'java语言从入门到精通',NULL,9,5) ON DUPLICATE KEY UPDATE `post_id`=VALUES(`post_id`)
+
+2025/07/23 14:07:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:52
+[3.105ms] [rows:1] UPDATE `t_unicornpost` SET `updated_at`='2025-07-23 14:07:45.832' WHERE `t_unicornpost`.`deleted_at` IS NULL AND `id` = 9
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:18
+[5.596ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`) VALUES ('2025-07-23 14:13:40.369','2025-07-23 14:13:40.369',NULL,'张三',20,'123456','zhangsan@example.com')
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:30
+[3.151ms] [rows:3] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`) VALUES ('2025-07-23 14:13:40.375','2025-07-23 14:13:40.375',NULL,'go','go语言从入门到精通',NULL),('2025-07-23 14:13:40.375','2025-07-23 14:13:40.375',NULL,'java','java语言从入门到精通',NULL),('2025-07-23 14:13:40.375','2025-07-23 14:13:40.375',NULL,'linux','linux从入门到精通',NULL)
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:34
+[1.627ms] [rows:6] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`,`id`) VALUES ('2025-07-23 14:13:40.375','2025-07-23 14:13:40.375',NULL,'go','go语言从入门到精通',4,10),('2025-07-23 14:13:40.375','2025-07-23 14:13:40.375',NULL,'java','java语言从入门到精通',4,11),('2025-07-23 14:13:40.375','2025-07-23 14:13:40.375',NULL,'linux','linux从入门到精通',4,12) ON DUPLICATE KEY UPDATE `user_id`=VALUES(`user_id`)
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:34
+[4.170ms] [rows:1] UPDATE `t_unicornuser` SET `updated_at`='2025-07-23 14:13:40.378' WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 4
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:43
+[2.215ms] [rows:3] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`) VALUES ('2025-07-23 14:13:40.382','2025-07-23 14:13:40.382',NULL,'go语言从入门到精通',NULL,NULL),('2025-07-23 14:13:40.382','2025-07-23 14:13:40.382',NULL,'java语言从入门到精通',NULL,NULL),('2025-07-23 14:13:40.382','2025-07-23 14:13:40.382',NULL,'linux从入门到精通',NULL,NULL)
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:46
+[1.663ms] [rows:4] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`,`id`) VALUES ('2025-07-23 14:13:40.382','2025-07-23 14:13:40.382',NULL,'go语言从入门到精通',NULL,10,7),('2025-07-23 14:13:40.382','2025-07-23 14:13:40.382',NULL,'java语言从入门到精通',NULL,10,8) ON DUPLICATE KEY UPDATE `post_id`=VALUES(`post_id`)
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:46
+[3.586ms] [rows:1] UPDATE `t_unicornpost` SET `updated_at`='2025-07-23 14:13:40.384' WHERE `t_unicornpost`.`deleted_at` IS NULL AND `id` = 10
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:49
+[0.976ms] [rows:2] INSERT INTO `t_unicorncomment` (`created_at`,`updated_at`,`deleted_at`,`content`,`user_id`,`post_id`,`id`) VALUES ('2025-07-23 14:13:40.382','2025-07-23 14:13:40.382',NULL,'linux从入门到精通',NULL,11,9) ON DUPLICATE KEY UPDATE `post_id`=VALUES(`post_id`)
+
+2025/07/23 14:13:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:49
+[2.722ms] [rows:1] UPDATE `t_unicornpost` SET `updated_at`='2025-07-23 14:13:40.388' WHERE `t_unicornpost`.`deleted_at` IS NULL AND `id` = 11
+
+2025/07/23 14:23:19 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67 Error 1054 (42S22): Unknown column 'user_name' in 'where clause'
+[1.550ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE user_name = 'userName' AND `t_unicornpost`.`user_id` IN (NULL) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:23:39 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67 Error 1054 (42S22): Unknown column 'user_name' in 'where clause'
+[1.664ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE user_name = '张三' AND `t_unicornpost`.`user_id` IN (NULL) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:26:30 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68 Error 1054 (42S22): Unknown column '张三' in 'where clause'
+[2.239ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE 张三 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:28:52 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68 Error 1054 (42S22): Unknown column 'username' in 'where clause'
+[2.095ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE username = '张三' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:29:05 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[4.932ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '张三' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:29:05 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68 Error 1054 (42S22): Unknown column 't_unicornpost.user_id' in 'where clause'
+[0.877ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '张三' AND `t_unicornuser`.`deleted_at` IS NULL AND `t_unicornpost`.`user_id` = 2 ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:30:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67 Error 1054 (42S22): Unknown column 'username' in 'where clause'
+[1.693ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE username = '张三' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:30:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[1.552ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` IN (NULL) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:30:46 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67 Error 1054 (42S22): Unknown column 'username' in 'where clause'
+[1.112ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE username = '张三' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:30:46 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[1.683ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` IN (NULL) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:31:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67
+[3.740ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '张三' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:31:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.268ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 2 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:32:03 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:73
+[6.433ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` = 4 AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:32:03 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:73
+[2.206ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` = 5 AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:32:03 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:73
+[2.732ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` = 6 AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:32:30 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67
+[4.051ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:32:30 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[2.561ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:32:32 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:73
+[6.534ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` = 7 AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:32:32 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:73
+[3.119ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` = 8 AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:32:32 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:73
+[2.533ms] [rows:3] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` = 9 AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:40:36 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67
+[3.949ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:40:36 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[1.952ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:40:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:76
+[4.879ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:40:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:67
+[3.985ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:40:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[2.414ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:41:10 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:76
+[4.960ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:43:04 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.988ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:43:04 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.214ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:43:06 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:77
+[5.048ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:44:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.660ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:44:45 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.101ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:44:47 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:78
+[5.458ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:45:08 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.710ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:45:08 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[1.536ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:45:25 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:78
+[7.252ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:45:31 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.444ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:45:31 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.203ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:45:32 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:78
+[6.880ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:45:41 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.154ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:45:41 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.519ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:46:03 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:78
+[3.431ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:48:50 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[3.932ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:48:50 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.028ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:48:50 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:77
+[2.202ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE post_id in (7,8,9) AND `t_unicorncomment`.`post_id` IN (NULL) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:50:15 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[4.399ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:50:15 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[1.875ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:50:15 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:77
+[1.155ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` IN (NULL) AND post_id in (7,8,9) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:51:26 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[4.856ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:51:26 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.978ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:51:26 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:77
+[2.586ms] [rows:3] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` IN (7,8,9) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:51:47 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[4.274ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:51:47 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[3.209ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:51:47 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:77
+[1.625ms] [rows:3] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` IN (7,8,9) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 14:52:56 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:68
+[2.991ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE user_name = '王五' AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 14:52:56 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:69
+[2.998ms] [rows:3] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`user_id` = 3 AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 14:52:56 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:77
+[1.353ms] [rows:3] SELECT * FROM `t_unicorncomment` WHERE `t_unicorncomment`.`post_id` IN (7,8,9) AND `t_unicorncomment`.`deleted_at` IS NULL
+
+2025/07/23 15:23:02 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:93 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at`' at line 1
+[1.222ms] [rows:0] SELECT * FROM (SELECT `post_id`,count() as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id`) as temp WHERE tmp.comments_num = SELECT max(tmpe.comments_num) as max_comments_num FROM (SELECT `post_id`,count() as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id`) as tmp
+
+2025/07/23 15:28:54 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:93 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at`' at line 1
+[1.155ms] [rows:0] SELECT * FROM ( SELECT `post_id`,count() as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count() as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp
+
+2025/07/23 15:31:36 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:93 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*' at line 1
+[1.090ms] [rows:0] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp
+
+2025/07/23 15:37:34 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:93 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT * FROM (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `p' at line 1
+[0.886ms] [rows:0] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = SELECT * FROM (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp) as tmmp
+
+2025/07/23 15:41:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:93 sql: expected 2 destination arguments in Scan, not 1; sql: expected 2 destination arguments in Scan, not 1
+[5.052ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 15:50:15 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[5.231ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 15:51:57 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[5.270ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 15:53:15 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[5.224ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 15:55:09 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[5.758ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 15:55:17 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:105
+[2.623ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`id` IN (NULL) AND id in (0,9) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 16:05:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[5.405ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 16:06:11 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[4.122ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 16:06:26 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[6.064ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 16:06:28 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:105
+[4.926ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE id in (0,9) AND `t_unicornpost`.`id` IN (NULL) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 16:07:54 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[4.765ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 16:08:54 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:98
+[4.962ms] [rows:2] SELECT * FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as temp WHERE temp.comments_num = (SELECT max(tmp.comments_num) as max_comments_num FROM ( SELECT `post_id`,count(*) as comments_num  FROM `t_unicorncomment` WHERE `t_unicorncomment`.`deleted_at` IS NULL GROUP BY `post_id` ) as tmp)
+
+2025/07/23 16:08:54 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:108
+[1.414ms] [rows:1] SELECT * FROM `t_unicornpost` WHERE `t_unicornpost`.`id` IN (0,9) AND `t_unicornpost`.`deleted_at` IS NULL
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.724ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[5.120ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.436ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' AND table_type = 'BASE TABLE'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.362ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.622ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.730ms] [rows:-] SELECT * FROM `t_unicornuser` LIMIT 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.079ms] [rows:-] SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' ORDER BY ORDINAL_POSITION
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[28.019ms] [rows:0] ALTER TABLE `t_unicornuser` ADD `post_count` bigint
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.419ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.950ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.562ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' AND index_name = 'idx_t_unicornuser_deleted_at'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.279ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.229ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.108ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' AND table_type = 'BASE TABLE'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.438ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.640ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.724ms] [rows:-] SELECT * FROM `t_unicornpost` LIMIT 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[4.364ms] [rows:-] SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' ORDER BY ORDINAL_POSITION
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[24.403ms] [rows:0] ALTER TABLE `t_unicornpost` ADD `comment_count` bigint
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[24.056ms] [rows:0] ALTER TABLE `t_unicornpost` ADD `comment_status` longtext
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.568ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.891ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.451ms] [rows:-] SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gorm_example' AND table_name = 't_unicornpost' AND constraint_name = 'fk_t_unicornuser_posts'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.290ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.127ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.182ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' AND index_name = 'idx_t_unicornpost_deleted_at'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.287ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.244ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.425ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND table_type = 'BASE TABLE'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.309ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.148ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.665ms] [rows:-] SELECT * FROM `t_unicorncomment` LIMIT 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.844ms] [rows:-] SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' ORDER BY ORDINAL_POSITION
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.335ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.172ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.971ms] [rows:-] SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND constraint_name = 'fk_t_unicornuser_comments'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.291ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.164ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.827ms] [rows:-] SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND constraint_name = 'fk_t_unicornpost_comments'
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.297ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.104ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:25:29 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.891ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND index_name = 'idx_t_unicorncomment_deleted_at'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.499ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[4.089ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.876ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' AND table_type = 'BASE TABLE'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.434ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.451ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.042ms] [rows:-] SELECT * FROM `t_unicornuser` LIMIT 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[3.329ms] [rows:-] SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' ORDER BY ORDINAL_POSITION
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.358ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.742ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.497ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gorm_example' AND table_name = 't_unicornuser' AND index_name = 'idx_t_unicornuser_deleted_at'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.341ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.243ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.587ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' AND table_type = 'BASE TABLE'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.303ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.207ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.929ms] [rows:-] SELECT * FROM `t_unicornpost` LIMIT 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.760ms] [rows:-] SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' ORDER BY ORDINAL_POSITION
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.333ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.468ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.490ms] [rows:-] SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gorm_example' AND table_name = 't_unicornpost' AND constraint_name = 'fk_t_unicornuser_posts'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.363ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.235ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.136ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gorm_example' AND table_name = 't_unicornpost' AND index_name = 'idx_t_unicornpost_deleted_at'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.344ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.227ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.182ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND table_type = 'BASE TABLE'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.329ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.122ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.921ms] [rows:-] SELECT * FROM `t_unicorncomment` LIMIT 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.941ms] [rows:-] SELECT column_name, column_default, is_nullable = 'YES', data_type, character_maximum_length, column_type, column_key, extra, column_comment, numeric_precision, numeric_scale , datetime_precision FROM information_schema.columns WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' ORDER BY ORDINAL_POSITION
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.392ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.589ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.263ms] [rows:-] SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND constraint_name = 'fk_t_unicornuser_comments'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.364ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.528ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.136ms] [rows:-] SELECT count(*) FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND constraint_name = 'fk_t_unicornpost_comments'
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[0.317ms] [rows:-] SELECT DATABASE()
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[1.210ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'gorm_example%' ORDER BY SCHEMA_NAME='gorm_example' DESC,SCHEMA_NAME limit 1
+
+2025/07/23 16:27:35 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/init.go:23
+[2.174ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'gorm_example' AND table_name = 't_unicorncomment' AND index_name = 'idx_t_unicorncomment_deleted_at'
+
+2025/07/23 16:27:40 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:21
+[6.548ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`,`post_count`) VALUES ('2025-07-23 16:27:40.776','2025-07-23 16:27:40.776',NULL,'张三',20,'123456','zhangsan@example.com',0)
+
+2025/07/23 16:27:44 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:65 record not found
+[4.329ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE id = NULL AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:28:43 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:21
+[8.012ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`,`post_count`) VALUES ('2025-07-23 16:28:43.825','2025-07-23 16:28:43.825',NULL,'张三',20,'123456','zhangsan@example.com',0)
+
+2025/07/23 16:28:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:65 record not found
+[4.984ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE id = NULL AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:29:36 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:21
+[7.266ms] [rows:1] INSERT INTO `t_unicornuser` (`created_at`,`updated_at`,`deleted_at`,`user_name`,`age`,`password`,`email`,`post_count`) VALUES ('2025-07-23 16:29:36.151','2025-07-23 16:29:36.151',NULL,'张三',20,'123456','zhangsan@example.com',0)
+
+2025/07/23 16:29:47 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66 record not found
+[5.784ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE id = NULL AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:36:02 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66 record not found
+[3.509ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE id = NULL AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:41:07 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66
+[5.545ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE id = 7 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:41:08 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:71
+[7.109ms] [rows:1] UPDATE `t_unicornuser` SET `created_at`='2025-07-23 16:29:36.151',`updated_at`='2025-07-23 16:41:08.892',`deleted_at`=NULL,`user_name`='张三',`age`=20,`password`='123456',`email`='zhangsan@example.com',`post_count`=1 WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 16:41:13 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66
+[5.563ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE id = 7 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:41:13 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:71
+[5.312ms] [rows:1] UPDATE `t_unicornuser` SET `created_at`='2025-07-23 16:29:36.151',`updated_at`='2025-07-23 16:41:13.022',`deleted_at`=NULL,`user_name`='张三',`age`=20,`password`='123456',`email`='zhangsan@example.com',`post_count`=2 WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 16:41:13 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66
+[5.446ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE id = 7 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:41:13 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:71
+[2.481ms] [rows:1] UPDATE `t_unicornuser` SET `created_at`='2025-07-23 16:29:36.151',`updated_at`='2025-07-23 16:41:13.618',`deleted_at`=NULL,`user_name`='张三',`age`=20,`password`='123456',`email`='zhangsan@example.com',`post_count`=3 WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 16:41:13 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:131 SLOW SQL >= 200ms
+[15120.342ms] [rows:3] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`,`comment_count`,`comment_status`) VALUES ('2025-07-23 16:40:58.505','2025-07-23 16:40:58.505',NULL,'go','go语言从入门到精通',7,0,''),('2025-07-23 16:40:58.505','2025-07-23 16:40:58.505',NULL,'java','java语言从入门到精通',7,0,''),('2025-07-23 16:40:58.505','2025-07-23 16:40:58.505',NULL,'linux','linux从入门到精通',7,0,'')
+
+2025/07/23 16:41:13 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:135 WHERE conditions required
+[1.091ms] [rows:0] UPDATE `t_unicornuser` SET `updated_at`='2025-07-23 16:41:13.625' WHERE `t_unicornuser`.`deleted_at` IS NULL
+
+2025/07/23 16:44:03 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66 record not found
+[4.771ms] [rows:0] SELECT * FROM `t_unicornuser` WHERE id = NULL AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:45:18 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66
+[4.414ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE id = 7 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:45:19 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:71
+[7.652ms] [rows:1] UPDATE `t_unicornuser` SET `created_at`='2025-07-23 16:29:36.151',`updated_at`='2025-07-23 16:45:19.646',`deleted_at`=NULL,`user_name`='张六',`age`=20,`password`='123456',`email`='zhangsan@example.com',`post_count`=4 WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 16:45:20 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66
+[3.828ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE id = 7 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:45:20 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:71
+[3.064ms] [rows:1] UPDATE `t_unicornuser` SET `created_at`='2025-07-23 16:29:36.151',`updated_at`='2025-07-23 16:45:20.228',`deleted_at`=NULL,`user_name`='张六',`age`=20,`password`='123456',`email`='zhangsan@example.com',`post_count`=5 WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 16:45:20 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:66
+[5.942ms] [rows:1] SELECT * FROM `t_unicornuser` WHERE id = 7 AND `t_unicornuser`.`deleted_at` IS NULL ORDER BY `t_unicornuser`.`id` LIMIT 1
+
+2025/07/23 16:45:20 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:71
+[4.996ms] [rows:1] UPDATE `t_unicornuser` SET `created_at`='2025-07-23 16:29:36.151',`updated_at`='2025-07-23 16:45:20.705',`deleted_at`=NULL,`user_name`='张六',`age`=20,`password`='123456',`email`='zhangsan@example.com',`post_count`=6 WHERE `t_unicornuser`.`deleted_at` IS NULL AND `id` = 7
+
+2025/07/23 16:45:20 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:130 SLOW SQL >= 200ms
+[4851.277ms] [rows:3] INSERT INTO `t_unicornpost` (`created_at`,`updated_at`,`deleted_at`,`title`,`content`,`user_id`,`comment_count`,`comment_status`) VALUES ('2025-07-23 16:45:15.863','2025-07-23 16:45:15.863',NULL,'go','go语言从入门到精通',7,0,''),('2025-07-23 16:45:15.863','2025-07-23 16:45:15.863',NULL,'java','java语言从入门到精通',7,0,''),('2025-07-23 16:45:15.863','2025-07-23 16:45:15.863',NULL,'linux','linux从入门到精通',7,0,'')
+
+2025/07/23 16:51:00 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:140 Error 1054 (42S22): Unknown column 'conntent' in 'where clause'
+[1.867ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE conntent = 'go语言从入门到精通' AND `t_unicorncomment`.`deleted_at` IS NULL ORDER BY `t_unicorncomment`.`id` LIMIT 1
+
+2025/07/23 16:51:44 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:140
+[4.077ms] [rows:1] SELECT * FROM `t_unicorncomment` WHERE content = 'go语言从入门到精通' AND `t_unicorncomment`.`deleted_at` IS NULL ORDER BY `t_unicorncomment`.`id` LIMIT 1
+
+2025/07/23 16:51:57 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:80 record not found
+[5.605ms] [rows:0] SELECT * FROM `t_unicornpost` WHERE id = NULL AND `t_unicornpost`.`deleted_at` IS NULL ORDER BY `t_unicornpost`.`id` LIMIT 1
+
+2025/07/23 16:53:00 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:140 sql: expected 2 arguments, got 3
+[1.750ms] [rows:0] SELECT * FROM `t_unicorncomment` WHERE content = 'go语言从入门到精通' AND `t_unicorncomment`.`deleted_at` IS NULL ORDER BY `t_unicorncomment`.`id` LIMIT 'post_id is not null'
+
+2025/07/23 16:53:42 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:140
+[5.182ms] [rows:1] SELECT * FROM `t_unicorncomment` WHERE (post_id is not null or post_id != 0) AND content = 'go语言从入门到精通' AND `t_unicorncomment`.`deleted_at` IS NULL ORDER BY `t_unicorncomment`.`id` LIMIT 1
+
+2025/07/23 16:53:51 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:80
+[7.576ms] [rows:1] SELECT * FROM `t_unicornpost` WHERE id = 9 AND `t_unicornpost`.`deleted_at` IS NULL ORDER BY `t_unicornpost`.`id` LIMIT 1
+
+2025/07/23 16:53:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/model.go:88
+[7.013ms] [rows:1] UPDATE `t_unicornpost` SET `created_at`='2025-07-23 14:07:45.816',`updated_at`='2025-07-23 16:53:55.661',`deleted_at`=NULL,`title`='linux',`content`='linux从入门到精通',`user_id`=3,`comment_count`=-1,`comment_status`='无评论' WHERE `t_unicornpost`.`deleted_at` IS NULL AND `id` = 9
+
+2025/07/23 16:53:55 /Users/lujun/lujunProject/go-project/web3.0_learn/task-week-three/gorm/service.go:143 SLOW SQL >= 200ms
+[12901.590ms] [rows:1] UPDATE `t_unicorncomment` SET `deleted_at`='2025-07-23 16:53:42.77' WHERE `t_unicorncomment`.`id` = 4 AND `t_unicorncomment`.`deleted_at` IS NULL
