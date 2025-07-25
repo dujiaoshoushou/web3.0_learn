@@ -1,0 +1,15 @@
+app:
+  addr: ":8088"
+  mode: "debug"
+  log:
+    path: "./logs"
+    max_size: 100
+    max_backups: 7
+    max_age: 30
+    compress: true
+
+db:
+  dsn: "root:123456@tcp(127.0.0.1:3307)/gorm_example?charset=utf8mb4&parseTime=True&loc=Local"
+
+jwt:
+  jwt_secret: "testtest"

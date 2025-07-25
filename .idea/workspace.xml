@@ -4,38 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db2b5815-0339-40eb-af44-e4befb7addc0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/web3.0_learn.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/gorm/gorm_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/gorm/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/gorm/model.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/gorm/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/sql/student.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/sqlx/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/sqlx/init_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-three/task.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/channel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/channel_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/goroutine.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/goroutine_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/lock.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/lock_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/object_oriented.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/object_oriented_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/pointer.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/pointer_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-week-two/task.md" afterDir="false" />
-    </list>
+    <list default="true" id="db2b5815-0339-40eb-af44-e4befb7addc0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
